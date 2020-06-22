@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="laporan kehadiran" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" >
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="NIS" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     data_siswa.`NIS` AS data_siswa_NIS,
+     data_siswa.`Nama` AS data_siswa_Nama,
+     data_siswa.`kelas` AS data_siswa_kelas,
+     data_siswa.`jam kedatangan` AS data_siswa_jam_kedatangan
+FROM
+     `data_siswa` data_siswa]]>
+	</queryString>
+	<field name="data_siswa_NIS" class="java.lang.Integer"/>
+	<field name="data_siswa_Nama" class="java.lang.String"/>
+	<field name="data_siswa_kelas" class="java.lang.String"/>
+	<field name="data_siswa_jam_kedatangan" class="java.lang.String"/>
+	<variable name="data_siswa_Nama_1" class="java.lang.Integer" resetType="Column" calculation="Count">
+		<variableExpression><![CDATA[$F{data_siswa_Nama}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="88" splitType="Stretch">
+			<staticText>
+				<reportElement  x="0" y="0" width="555" height="29"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[SEKOLAH DASAR NEGERI 1 JAMBI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement  x="0" y="29" width="555" height="29"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Jl. Arif Rahman Hakim NO.50 Indonesia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement  x="0" y="58" width="555" height="29"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Tlp. 0213xxxxxxxxx]]></text>
+			</staticText>
+			<line>
+				<reportElement  x="-17" y="87" width="588" height="1"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="66" splitType="Stretch">
+			<line>
+				<reportElement  x="-17" y="-1" width="588" height="1"/>
+			</line>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement  x="471" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement  x="433" y="0" width="38" height="20"/>
+				<textElement/>
+				<text><![CDATA[Jambi,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement  x="0" y="37" width="555" height="29"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[LAPORAN KEHADIRAN SISWA]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<rectangle>
+				<reportElement  x="47" y="6" width="100" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement  x="147" y="6" width="170" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement  x="317" y="6" width="59" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement  x="376" y="6" width="100" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement  x="78" y="6" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[NIS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement  x="191" y="6" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Nama Siswa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement  x="338" y="6" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Kelas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement  x="393" y="6" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Jam Kedatangan]]></text>
+			</staticText>
+			<line>
+				<reportElement  x="47" y="23" width="429" height="3"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement  x="47" y="0" width="100" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement  x="147" y="0" width="170" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement  x="317" y="0" width="59" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement  x="376" y="0" width="100" height="20"/>
+			</rectangle>
+			<textField>
+				<reportElement x="78" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{data_siswa_NIS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement  x="191" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{data_siswa_Nama}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="338" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{data_siswa_kelas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement  x="393" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{data_siswa_jam_kedatangan}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="100" splitType="Stretch">
+			<staticText>
+				<reportElement  x="455" y="0" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Mengetahui]]></text>
+			</staticText>
+			<staticText>
+				<reportElement  x="455" y="20" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Guru mata pelajaran,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement  x="455" y="80" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Hayati  Sp.d]]></text>
+			</staticText>
+			<staticText>
+				<reportElement  x="0" y="0" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Mengetahui]]></text>
+			</staticText>
+			<staticText>
+				<reportElement  x="0" y="20" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Kepala Sekolah]]></text>
+			</staticText>
+			<staticText>
+				<reportElement  x="0" y="80" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Zainal  abidin Sp.d]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="15" splitType="Stretch"/>
+	</summary>
+</jasperReport>
